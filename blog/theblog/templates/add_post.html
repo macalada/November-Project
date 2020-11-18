@@ -16,6 +16,10 @@
                     </form>
                 </div>
         </div>
+        <script>
+            let name= '{{user.id}}'
+            document.getElementById('authorName').value= name;
+        </script>
     {% else %}
     Please login to add post.
     {% endif %}

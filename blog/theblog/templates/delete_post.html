@@ -3,19 +3,21 @@
 
 {% block content %}
 
-{% if user.is_authenticated %}
-    <div class="container">
-        <h1>Delete Blog Post</h1>
-        <br/><br/>
-        <h3>Delete : {{post.title}}</h3>
-            <div class="form-group">
-                <form method="POST">
-                    {%csrf_token %}
-                   
-                    <button class="btn btn-danger">DELETE</button>
-                </form>
+    {% if user.is_authenticated %}
+        {% if user.id == post.author.id %}
+            <div class="container">
+                <h1>Delete Blog Post</h1>
+                <br/><br/>
+                <h3>Delete : {{post.title}}</h3>
+                    <div class="form-group">
+                        <form method="POST">
+                            {%csrf_token %}
+                        
+                            <button class="btn btn-danger">DELETE</button>
+                        </form>
+                    </div>
             </div>
-    </div>
+        {% endif %}
     {% else %}
     Please login to add post.
     {% endif %}
